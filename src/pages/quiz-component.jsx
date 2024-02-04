@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 
 const QuizComponent = ({ name, answers = [], correctAnswer }) => {
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [result, setResult] = useState('');
+  const id = useId()
 
   const handleAnswerChange = (event) => {
     setSelectedAnswer(event.target.value);
@@ -35,7 +36,7 @@ const QuizComponent = ({ name, answers = [], correctAnswer }) => {
               checked={selectedAnswer === answer}
               onChange={handleAnswerChange}
               id={index}
-              name="push-notifications"
+              name={`push-notifications${id}`}
               type="radio"
               class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
             />
